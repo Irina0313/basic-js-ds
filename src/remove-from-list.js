@@ -24,12 +24,12 @@ const { ListNode } = require('../extensions/list-node.js');
  */
 class LinkedList {
   constructor() {
-    this.head = null
+    this.head = null;
   }
-  add(value) {
-    //let node = new ListNode(value)
-    this.head = value;
+  add(elem) {
+    this.head = elem;
   }
+
   removeAt(position) {
     let current = this.head;
     if (position === 0) {
@@ -72,60 +72,31 @@ class LinkedList {
   }
 }
 
-//let list = new LinkedList();
+let list = new LinkedList();
 function removeKFromList(l, k) {
-  //console.log(l);
+  let elem = l;
+  if (l.value === k) {
 
-  //console.log(current === k)
+    elem = l.next;
 
-  //let prev = '';
-
-  let current = l;
-  let index = 0;
-
-  while (current.value) {
-    if (current.value === k) {
-      //console.log(current.value)
-      return removeAt(index);
-    }
-    current = current.next;
-    index++;
   }
 
-  function removeAt(position) {
-    console.log('dddd', position)
+  console.log('l', elem)
+  list.add(elem);
+  console.log('1', list.indexOf(k))
 
-    if (position < 0 || position >= this.length) {
-      return null;
-    }
-
-    let current = l;
-
-    if (position === 0) {
-      current = current.next;
-    } else {
-      let prev = null;
-      let index = 0;
-
-      while (index < position) {
-        prev = current;
-        current = current.next;
-        index++;
+  function del() {
+    if (list.indexOf(k) != -1) {
+      list.remove(k);
+      if (list.indexOf(k) != -1) {
+        del();
       }
-
-      prev.next = current.next;
     }
-
-    this.length--;
-    if (current.value === k) {
-      //console.log(current.value)
-      return removeAt(index);
-    } else {
-      return current;
-    }
+    return elem;
 
   }
-  //console.log('kk', l)
+  return del();
+
 }
 
 
